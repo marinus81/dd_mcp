@@ -10,3 +10,5 @@ plumbery_contrib.egg-info/
 .tfstate
 .tfvars
 *.retry
+ansible/group_vars/csr.yaml
+*.log
