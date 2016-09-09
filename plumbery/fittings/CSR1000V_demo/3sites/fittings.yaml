@@ -14,7 +14,7 @@ defaults:
 
 polishers:
   - ansible:
-      reap: /home/dhamann/ansible/inventory/csrdemo.yaml
+      reap: /home/dhamann/dd_mcp/ansible/inventory/csrdemo.yaml
 
 ---
 
