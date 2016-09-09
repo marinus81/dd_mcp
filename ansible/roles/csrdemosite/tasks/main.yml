@@ -1,0 +1,58 @@
+---
+# tasks file for csrdemosite
+  - name: Create Network Domain
+    dimensiondata_network:
+      region: "{{ region }}"
+      location: "{{ location }}"
+      name: "WKO_TEST_{{ location }}"
+      service_plan: ADVANCED
+      wait: yes
+    register: dd_net
+  - name: Print Debug
+    debug: var=dd_net
+  - name: Create Mgmt VLAN
+    dimensiondata_vlan:
+      region: "{{ region }}"
+      location: "{{ location }}"
+      network_domain: "{{ dd_net.network.name }}" 
+      name: "CSR_Management"
+      description: "CSR Management VLAN. Same on all sites"
+      private_ipv4_base_address: "172.31.222.0"
+      private_ipv4_prefix_size: 24
+      action: create
+      wait: yes
+  - name: Create Frontend1 VLAN
+    dimensiondata_vlan:
+      region: "{{ region }}"
+      location: "{{ location }}"
+      network_domain: "{{ dd_net.network.name }}"
+      name: "Frontend1"
+      description: "Frontend 1 (e.g. Internet)"
+      private_ipv4_base_address: "{{ frontend1_subnet }}"
+      private_ipv4_prefix_size: 24
+      action: create
+      wait: yes
+  - name: Create Frontend2 VLAN
+    dimensiondata_vlan:
+      region: "{{ region }}"
+      location: "{{ location }}"
+      network_domain: "{{ dd_net.network.name }}"
+      name: "Frontend2"
+      description: "Frontend 2 (e.g. MPLS)"
+      private_ipv4_base_address: "{{ frontend2_subnet }}"
+      private_ipv4_prefix_size: 24
+      action: create
+      wait: yes
+  - name: Create Internal VLAN
+    dimensiondata_vlan:
+      region: "{{ region }}"
+      location: "{{ location }}"
+      network_domain: "{{ dd_net.network.name }}"
+      name: "Internal_{{ location }}"
+      description: Internal Site Subnet
+      private_ipv4_base_address: "{{ internal_subnet }}"
+      private_ipv4_prefix_size: 24
+      action: create
+      wait: yes
+
+

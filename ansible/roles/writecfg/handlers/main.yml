@@ -1,0 +1,7 @@
+---
+- name: write config
+  ios_command:
+    commands: write
+    username: "{{ username }}"
+    password: "{{ password }}"
+    host: "{{ device_ip }}"

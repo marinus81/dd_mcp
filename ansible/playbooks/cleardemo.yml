@@ -1,0 +1,13 @@
+---
+  - name: Clean Dimension Data infrastructure  
+    hosts: localhost
+    vars:
+        networkDomainName: ansible.CaaS_Sandbox
+    vars_files:
+      - /root/caas_credentials.yml
+    tasks:
+      - name: TearDown my Nework Domain
+        caas_networkdomain:
+          caas_credentials: "{{ caas_credentials }}"
+          name: "{{ networkDomainName }}"
+          state: absent

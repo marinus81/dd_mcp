@@ -1,0 +1,6 @@
+---
+# defaults file for csrdemosite
+region: na
+location: NA9
+internal_subnet: 10.255.255.0
+

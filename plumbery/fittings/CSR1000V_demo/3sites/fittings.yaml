@@ -1,0 +1,79 @@
+---
+information:
+  - "Configure 3 Sites for Cisco CSR1000V and Hybrid WAN Demo"
+
+links:
+  documentation: 
+
+defaults:
+  csrNode:
+    csr1000v:
+       appliance: 'CSR1000v_mgmtip_3.16.03'
+       cpu: 2
+       memory: 4
+
+polishers:
+  - ansible:
+      reap: /home/dhamann/ansible/inventory/csrdemo.yaml
+
+---
+
+regionId: dd-na
+locationId: NA9
+
+blueprints:
+
+  - frontend1:
+
+      domain:
+        name: WKO_TEST_NA9
+        ipv4: 2
+
+      ethernet:
+        name: Frontend1
+        description: Frontend Network Internet
+        subnet: 172.17.0.0
+
+  - frontend2:
+      domain:
+        name: WKO_TEST_NA9
+        ipv4: 2
+
+      ethernet:
+         name: Frontend2
+         description: Frontend Network MPLS
+         subnet: 172.17.1.0
+
+  - mgmt:
+      domain:
+        name: WKO_TEST_NA9
+        ipv4: 2
+      ethernet:
+          name: Management
+          subnet: 192.168.0.0
+
+  - int:
+      domain:
+        name: WKO_TEST_NA9
+        ipv4: 2
+      ethernet:
+         name: Internal_NA9
+         subnet: 10.1.0.0
+  - csrmgmt:
+       domain:
+         name: WKO_TEST_NA9
+         ipv4: 2
+       ethernet:
+         name: CSR_Management
+         subnet: 172.31.222.0
+       nodes:
+         - csr1000v:
+              default: csrNode
+              description: '#csr'
+              appliance: 'CSR1000v_mgmtip_3.16.03'
+              glue:
+                - primary .10
+                - internet 22 55443
+                - Frontend1 
+                - Frontend2
+                - Internal_NA9

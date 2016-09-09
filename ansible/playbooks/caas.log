@@ -1,0 +1,9 @@
+DEBUG:root:--------------------------------caas_credentials---2016-08-31 17:55:11.761630
+DEBUG:root:--------------------------------caas_networkdomain---2016-08-31 17:55:12.614210
+DEBUG:root:/caas/2.3/3755d938-0bfc-4553-9c68-b61fbd1f4cd0/network/networkDomain?datacenterId=EU6&name=ansible.CaaS_Sandbox
+DEBUG:root:/caas/2.3/3755d938-0bfc-4553-9c68-b61fbd1f4cd0/network/deployNetworkDomain
+DEBUG:root:/caas/2.3/3755d938-0bfc-4553-9c68-b61fbd1f4cd0/network/networkDomain?datacenterId=EU6&name=ansible.CaaS_Sandbox
+DEBUG:root:--------------------------------caas_networkdomain---2016-08-31 17:56:14.518310
+DEBUG:root:/caas/2.3/3755d938-0bfc-4553-9c68-b61fbd1f4cd0/network/networkDomain?datacenterId=EU6&name=ansible.CaaS_Sandbox
+DEBUG:root:/caas/2.3/3755d938-0bfc-4553-9c68-b61fbd1f4cd0/network/deleteNetworkDomain
+DEBUG:root:/caas/2.3/3755d938-0bfc-4553-9c68-b61fbd1f4cd0/network/networkDomain?datacenterId=EU6&name=ansible.CaaS_Sandbox

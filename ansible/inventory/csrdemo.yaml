@@ -1,0 +1,12 @@
+csr1000v ansible_ssh_host=168.128.7.200
+
+[NA9]
+csr1000v
+
+[csr]
+csr1000v
+
+[plumbery]
+csr1000v
+
+

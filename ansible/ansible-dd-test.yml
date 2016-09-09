@@ -1,0 +1,47 @@
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - dimensiondata_network:
+      region: na
+      location: NA12
+      name: Ansible_testing_dh
+      service_plan: ADVANCED  
+      wait: yes
+  - dimensiondata_vlan:
+      region: na
+      location: NA12
+      network_domain: Ansible_testing_dh
+      name: my_vlan1
+      description: A test VLANd Network.
+      private_ipv4_base_address: '192.168.22.0'
+      private_ipv4_prefix_size: 24
+      action: create
+      wait: yes
+  - dimensiondata_vlan:
+      region: na
+      location: NA12
+      network_domain: Ansible_testing_dh
+      name: my_vlan1
+      description: A test VLANd Network.
+      private_ipv4_base_address: '192.168.22.0'
+      private_ipv4_prefix_size: 24
+      action: read
+    register: vlan_result
+  - dimensiondata_vlan:
+      region: na
+      location: NA12
+      network_domain: Ansible_testing_agb
+      vlan_id: "{{ vlan_result['vlan']['id'] }}"
+      action: delete
+      wait: yes
+    when: vlan_result['vlan']['id']
+  - dimensiondata_network:
+      region: na
+      location: NA12
+      name: Ansible_testing_dh
+      state: absent
+    register: delete_nd_result
+    until: delete_nd_result.msg.find("Deleted network with id") != -1
+    retries: 10
+    delay: 30
+

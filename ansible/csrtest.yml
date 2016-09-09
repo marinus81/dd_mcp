@@ -1,0 +1,15 @@
+---
+
+- hosts: localhost
+  roles:
+    - { role: csrdemosite, region: "na", location: "NA9", frontend1_subnet: "172.17.0.0",
+                           frontend2_subnet: "172.17.1.0", internal_subnet: "10.0.0.0" }
+#    - csrdemosite
+#      - region: ap
+#      - location: AP3
+#      - internal_subnet: "10.1.0.0"
+
+#- hosts: csr_routers
+#  roles:
+#    - { role: democonfig }
+
