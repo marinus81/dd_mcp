@@ -1,9 +1,0 @@
----
-- name: Ensure basic configuration of CSR1000V routers
-  connection: local
-  hosts: csr
-  gather_facts: false
-
-  roles:
-    - role: csrdemorouter
-      tags: csrdemorouter

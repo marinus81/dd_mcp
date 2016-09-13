@@ -1,2 +1,4 @@
 ---
 # vars file for csrdemorouter
+username: "{{ lookup('env','CSR_USER') }}"
+password: "{{ lookup('env','CSR_PASS') }}"

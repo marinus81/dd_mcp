@@ -6,10 +6,10 @@
   tasks: 
   - name: change_hostname
     ios_template:
-      src: demorouter.j2
-      username: "{{ username }}"
-      password: "{{ password }}"
+      username: "{{ lookup('env','CSR_USER') }}"
+      password: "{{ lookup('env','CSR_PASS') }}"
       host: "{{ ansible_ssh_host }}"
+      src: demorouter.j2
     register: template
 
   - debug: var=template
