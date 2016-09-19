@@ -15,7 +15,8 @@ defaults:
 polishers:
   - ansible:
       reap: /home/dhamann/dd_mcp/ansible/inventory/csrdemo.yaml
-
+  - inventory:
+  - information:
 ---
 
 regionId: dd-na
