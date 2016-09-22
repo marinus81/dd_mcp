@@ -1,4 +1,4 @@
-csr1000v ansible_ssh_host=168.128.7.200
+csr1000v ansible_ssh_host=168.128.7.200 nic0=172.31.222.10
 
 [NA9]
 csr1000v

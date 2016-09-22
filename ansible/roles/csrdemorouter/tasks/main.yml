@@ -1,24 +1,19 @@
 ---
-- name: debug
-  debug: var=username
-  
-- name: debug2
-  debug: var=password
 
-- name: template
-  ios_template:
+#- name: template
+#  ios_template:
+#    username: "{{ username }}"
+#    password: "{{ password }}"
+#    host: "{{ ansible_ssh_host }}"
+#    src: "demorouter.j2"
+#  register: template
+
+- name: router config
+  ios_config:
     username: "{{ username }}"
     password: "{{ password }}"
     host: "{{ ansible_ssh_host }}"
     src: "demorouter.j2"
   register: template
-
-- name: show_ver
-  ios_command:
-    username: "{{ username }}"
-    password: "{{ password }}"
-    host: "{{ ansible_ssh_host }}"
-    commands: "show version"
-
   
 - debug: var=template
